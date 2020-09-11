@@ -1,0 +1,19 @@
+plugin rp-pppoe.so
+
+enp6s0 # interface to build PPPoE
+
+name "ptt_pppoe@ip.hinet.net"
+usepeerdns
+maxfail 0
+
+# for every 600 seconds send lcp echo-request
+# if for consecutively 3 times no response, try reconnect
+# wait 60 seconds before retry
+persist
+lcp-echo-interval 600
+lcp-echo-failure 3
+holdoff 60
+
+defaultroute
+hide-password
+noauth
